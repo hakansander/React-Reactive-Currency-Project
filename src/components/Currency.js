@@ -11,7 +11,7 @@ export const Currency = ({currency}) => {
     }
 
     return (
-        <tr id={currency.id} key={currency.base + currency.target} name="currency" value={currency.id} onClick={handleClick} className={currency.base ? "todo strike" : "todo"}>
+        <tr id={currency.id} name="currency" value={currency.id} onClick={handleClick} className={currency.base ? "todo strike" : "todo"}>
             <td>{currency.base}</td>
             <td>${currency.target}</td>
             <td style={{ backgroundColor: ccolor }}>{currency.rate}</td>

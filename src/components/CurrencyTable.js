@@ -112,7 +112,7 @@ export const CurrencyTable = () => {
             </thead>
             <tbody>
                 {sortableCurrencyList.map((currency) => (
-                    <Currency currency={currency} />
+                    <Currency key={currency.base + currency.target} currency={currency} />
                 ))}
             </tbody>
         </table>
