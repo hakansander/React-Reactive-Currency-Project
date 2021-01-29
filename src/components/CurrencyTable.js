@@ -48,7 +48,7 @@ export const CurrencyTable = () => {
 
     let eventSource = undefined;
 
-    const currencyUrl = "http://localhost:8080/currency/random"
+    const currencyUrl = "http://hs-real-time-currency-backend.herokuapp.com/currency/random"
 
     useEffect(() => {
         if (!listening) {
