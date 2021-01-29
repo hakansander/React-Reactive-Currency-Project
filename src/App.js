@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import {CurrencyList} from "./components/CurrencyList";
+import {CurrencyTable} from "./components/CurrencyTable";
+import React from "react";
 
 function App() {
   return (
-    <CurrencyList/>
+    <CurrencyTable/>
   );
 }
 
