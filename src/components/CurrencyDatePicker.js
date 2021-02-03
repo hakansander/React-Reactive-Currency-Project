@@ -6,6 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 export const CurrencyDatePicker = (params) => {
     const [startDate, setStartDate] = useState(new Date());
     return (
-        <DatePicker selected={startDate} onChange={date => params.onCurrencyDateSelect(date)} />
+        <DatePicker selected={new Date(params.value)} onChange={date => params.onCurrencyDateSelect(date)} />
     );
 };
