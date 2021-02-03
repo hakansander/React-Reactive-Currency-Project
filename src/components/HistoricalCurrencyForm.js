@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDatePicker from "react-datepicker";
 import {CurrencyDatePicker} from "./CurrencyDatePicker";
 import {formatDate} from "../utils/DateFormatter";
 
