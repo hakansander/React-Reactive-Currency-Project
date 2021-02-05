@@ -40,7 +40,7 @@ const useSortableData = (currencyList, config = null) => {
     return { sortableCurrencyList: sortedItems, requestSort, sortConfig };
 };
 
-export const CurrencyTable = () => {
+export const RealTimeCurrencyTable = () => {
     const [listening, setListening] = useState(false);
     const [currencyList, setCurrencyList] = useState([]);
 
