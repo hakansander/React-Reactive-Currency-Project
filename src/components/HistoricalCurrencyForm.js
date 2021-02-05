@@ -3,10 +3,12 @@ import {CurrencyDatePicker} from "./CurrencyDatePicker";
 import {formatDate} from "../utils/DateFormatter";
 import axios from 'axios';
 
+import currencySymbols from "../../src/currencySymbols.json";
+
 export const HistoricalCurrencyForm = ({ addCurrency }) => {
 
-    const [ baseInput, setBaseInput ] = useState('');
-    const [ targetInput, setTargetInput ] = useState('');
+    const [ baseInput, setBaseInput ] = useState('USD');
+    const [ targetInput, setTargetInput ] = useState('USD');
     const [ rateInput, setRateInput ] = useState('');
     const [ currencyDate, setCurrencyDate] = useState(formatDate(new Date()));
 
@@ -38,14 +40,9 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
                 console.log(data);
                 let responseData = response.data.data;
                 const rateTargetKey = Object.keys(responseData.rates).toString();
-                setData({base: responseData.base, target: rateTargetKey, rate: responseData.rates[rateTargetKey]})
+                setData({base: responseData.base, target: rateTargetKey, rate: responseData.rates[rateTargetKey], amount: rateInput })
             })
             .catch(error => console.log(error));
-
-
-/*        setBaseInput("");
-        setTargetInput("");
-        setRateInput("");*/
     }
 
     useEffect( () => {
@@ -56,8 +53,30 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input value={baseInput} type="text" onChange={handleBaseChange} placeholder="Enter base currency..."/>
-            <input value={targetInput} type="text" onChange={handleTargetChange} placeholder="Enter target currency..."/>
+            <select
+                onChange={handleBaseChange}>
+                    {currencySymbols.map(currency => (
+                        <option
+                            key={currency.symbol}
+                            value={currency.symbol}
+                        >
+                            {currency.symbol}
+                        </option>
+                    ))}
+            </select>
+
+            <select
+                onChange={handleTargetChange}>
+                {currencySymbols.map(currency => (
+                    <option
+                        key={currency.symbol}
+                        value={currency.symbol}
+                    >
+                        {currency.symbol}
+                    </option>
+                ))}
+            </select>
+
             <input value={rateInput} type="text" onChange={handleRateChange} placeholder="Enter exchange rate..."/>
             <CurrencyDatePicker value={currencyDate} onCurrencyDateSelect={handleCurrencyDateChange} />
             <button>Submit</button>
