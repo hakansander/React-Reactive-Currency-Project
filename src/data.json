@@ -1,0 +1,11 @@
+[{
+  "id": 1,
+  "base": "TRY",
+  "target": "USD",
+  "rate": "5.12"
+}, {
+  "id": 2,
+  "base": "TRY",
+  "target": "EUR",
+  "rate": "7.12"
+}]
