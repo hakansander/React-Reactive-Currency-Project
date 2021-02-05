@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
+    "axios": "^0.21.1",
+    "axios-hooks": "^2.3.0",
     "react": "^17.0.1",
     "react-date-picker": "^8.0.7",
     "react-datepicker": "^2.16.0",

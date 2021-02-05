@@ -16,6 +16,7 @@ export const HistoricalCurrencyTable = () => {
     return (
         <div>
             <HistoricalCurrencyForm addCurrency={addCurrency} />
+
             <table>
                 <caption>Currencies</caption>
                 <thead>
