@@ -32,7 +32,7 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.get(`http://localhost:8080/currency/${currencyDate}/${baseInput}?targetCurrencies=${targetInput}`)
+        axios.get(`https://currency-app-spring-boot.herokuapp.com/currency/${currencyDate}/${baseInput}?targetCurrencies=${targetInput}`)
             .then(response => {
                 let a = response;
                 console.log(data);
