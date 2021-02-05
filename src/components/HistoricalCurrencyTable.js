@@ -39,7 +39,21 @@ export const HistoricalCurrencyTable = () => {
                         <button
                             type="button"
                         >
-                            Rate
+                            Exchange Rate
+                        </button>
+                    </th>
+                    <th>
+                        <button
+                            type="button"
+                        >
+                            Unit Bought
+                        </button>
+                    </th>
+                    <th>
+                        <button
+                            type="button"
+                        >
+                            Total Amount
                         </button>
                     </th>
                 </tr>
