@@ -5,7 +5,7 @@ import {HistoricalCurrencyForm} from "./HistoricalCurrencyForm";
 import data from "../../src/data.json";
 
 export const HistoricalCurrencyTable = () => {
-    const [currencyList, setCurrencyList] = useState(data);
+    const [currencyList, setCurrencyList] = useState('');
 
     const addCurrency = (inputCurrency ) => {
         setCurrencyList(prevCurrencies => [
@@ -18,50 +18,33 @@ export const HistoricalCurrencyTable = () => {
             <HistoricalCurrencyForm addCurrency={addCurrency} />
 
             <table>
-                <caption>Currencies</caption>
                 <thead>
-                <tr>
-                    <th>
-                        <button
-                            type="button"
-                        >
-                            Source
-                        </button>
-                    </th>
-                    <th>
-                        <button
-                            type="button"
-                        >
-                            Target
-                        </button>
-                    </th>
-                    <th>
-                        <button
-                            type="button"
-                        >
-                            Exchange Rate
-                        </button>
-                    </th>
-                    <th>
-                        <button
-                            type="button"
-                        >
-                            Unit Bought
-                        </button>
-                    </th>
-                    <th>
-                        <button
-                            type="button"
-                        >
-                            Total Amount
-                        </button>
-                    </th>
-                </tr>
+                    <tr>
+                        <th>
+                            <button type="button">Source</button>
+                        </th>
+                        <th>
+                            <button type="button">Target</button>
+                        </th>
+                        <th>
+                            <button type="button">Date</button>
+                        </th>
+                        <th>
+                            <button type="button">Exchange Rate</button>
+                        </th>
+                        <th>
+                            <button type="button">Unit Bought</button>
+                        </th>
+                        <th>
+                            <button type="button">Total Amount</button>
+                        </th>
+                    </tr>
                 </thead>
+
                 <tbody>
-                {currencyList.map((currency) => (
-                    <Currency key={currency.base + currency.target} currency={currency} />
-                ))}
+                    {currencyList !== '' && currencyList.map((currency) => (
+                        <Currency key={currency.base + currency.target} currency={currency} />
+                    ))}
                 </tbody>
             </table>
         </div>

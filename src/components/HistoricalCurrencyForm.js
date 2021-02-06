@@ -40,7 +40,15 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
                 console.log(data);
                 let responseData = response.data.data;
                 const rateTargetKey = Object.keys(responseData.rates).toString();
-                setData({base: responseData.base, target: rateTargetKey, rate: responseData.rates[rateTargetKey], amount: rateInput })
+                setData(
+                    {
+                            base: responseData.base,
+                            target: rateTargetKey,
+                            rate: responseData.rates[rateTargetKey],
+                            amount: rateInput,
+                            date: currencyDate
+                          }
+                )
             })
             .catch(error => console.log(error));
     }
