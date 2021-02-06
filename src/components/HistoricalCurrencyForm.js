@@ -61,6 +61,7 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
 
     return (
         <form onSubmit={handleSubmit}>
+
             <select
                 onChange={handleBaseChange}>
                     {currencySymbols.map(currency => (
@@ -86,8 +87,11 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
             </select>
 
             <input value={rateInput} type="text" onChange={handleRateChange} placeholder="Enter exchange rate..."/>
+
             <CurrencyDatePicker value={currencyDate} onCurrencyDateSelect={handleCurrencyDateChange} />
+
             <button>Submit</button>
+
         </form>
     );
 };
