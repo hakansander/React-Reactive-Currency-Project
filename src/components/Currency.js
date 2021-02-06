@@ -30,6 +30,7 @@ export const Currency = ({currency}) => {
         <tr id={currency.id} name="currency" value={currency.id} onClick={handleClick} className={currency.base ? "todo strike" : "todo"}>
             <td>{currency.base}</td>
             <td>{currency.target}</td>
+            <td>{currency.date}</td>
             <td style={{ backgroundColor: ccolor }}>{(parseFloat(currency.rate)).toFixed(2)}</td>
             <td style={{ backgroundColor: ccolor }}>{(parseFloat(currency.amount)).toFixed(2)}</td>
             <td style={{ backgroundColor: ccolor }}>{(parseFloat(currency.rate) * parseFloat(currency.amount)).toFixed(2)}</td>
