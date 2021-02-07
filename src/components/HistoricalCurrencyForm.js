@@ -36,8 +36,6 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
 
         axios.get(`https://currency-app-spring-boot.herokuapp.com/currency/${currencyDate}/${baseInput}?targetCurrencies=${targetInput}`)
             .then(response => {
-                let a = response;
-                console.log(data);
                 let responseData = response.data.data;
                 const rateTargetKey = Object.keys(responseData.rates).toString();
                 setData(
@@ -61,6 +59,7 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
 
     return (
         <form onSubmit={handleSubmit}>
+
             <select
                 onChange={handleBaseChange}>
                     {currencySymbols.map(currency => (
@@ -86,8 +85,11 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
             </select>
 
             <input value={rateInput} type="text" onChange={handleRateChange} placeholder="Enter exchange rate..."/>
+
             <CurrencyDatePicker value={currencyDate} onCurrencyDateSelect={handleCurrencyDateChange} />
+
             <button>Submit</button>
+
         </form>
     );
 };
