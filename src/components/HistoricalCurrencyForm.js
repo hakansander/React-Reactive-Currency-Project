@@ -36,8 +36,6 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
 
         axios.get(`https://currency-app-spring-boot.herokuapp.com/currency/${currencyDate}/${baseInput}?targetCurrencies=${targetInput}`)
             .then(response => {
-                let a = response;
-                console.log(data);
                 let responseData = response.data.data;
                 const rateTargetKey = Object.keys(responseData.rates).toString();
                 setData(
