@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import '../styles.css';
 
-export const Currency = ({currency}) => {
+export const Currency = ({ currency, removeCurrency, key, index }) => {
     const [ccolor, setCcolor] = useState('yellow');
 
     const prevRate = useRef();
@@ -28,12 +28,16 @@ export const Currency = ({currency}) => {
 
     return (
         <tr id={currency.id} name="currency" value={currency.id} onClick={handleClick} className={currency.base ? "todo strike" : "todo"}>
+
+            <td><button style={{ background: "red" }} onClick={() => removeCurrency(index)}>x</button></td>
+
             <td>{currency.base}</td>
             <td>{currency.target}</td>
             <td>{currency.date}</td>
             <td style={{ backgroundColor: ccolor }}>{(parseFloat(currency.rate)).toFixed(2)}</td>
             <td style={{ backgroundColor: ccolor }}>{(parseFloat(currency.amount)).toFixed(2)}</td>
             <td style={{ backgroundColor: ccolor }}>{(parseFloat(currency.rate) * parseFloat(currency.amount)).toFixed(2)}</td>
+
         </tr>
     );
 };
