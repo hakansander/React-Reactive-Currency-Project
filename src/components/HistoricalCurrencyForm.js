@@ -6,13 +6,12 @@ import axios from 'axios';
 import currencySymbols from "../../src/currencySymbols.json";
 
 export const HistoricalCurrencyForm = ({ addCurrency }) => {
-
     const [ baseInput, setBaseInput ] = useState('USD');
     const [ targetInput, setTargetInput ] = useState('USD');
     const [ rateInput, setRateInput ] = useState('');
     const [ currencyDate, setCurrencyDate] = useState(formatDate(new Date()));
 
-    const [data, setData] = useState('');
+    const [data, setData] = useState(null);
 
     const handleBaseChange = (e) => {
         setBaseInput(e.currentTarget.value)
@@ -52,7 +51,7 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
     }
 
     useEffect( () => {
-        if(data !== '') {
+        if(data !== null) {
             addCurrency(data);
         }
     }, [data])
@@ -60,28 +59,24 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
     return (
         <form onSubmit={handleSubmit}>
 
-            <select
-                onChange={handleBaseChange}>
+            <select onChange={handleBaseChange}>
+
                     {currencySymbols.map(currency => (
-                        <option
-                            key={currency.symbol}
-                            value={currency.symbol}
-                        >
+                        <option key={currency.symbol} value={currency.symbol}>
                             {currency.symbol}
                         </option>
                     ))}
+
             </select>
 
-            <select
-                onChange={handleTargetChange}>
+            <select onChange={handleTargetChange}>
+
                 {currencySymbols.map(currency => (
-                    <option
-                        key={currency.symbol}
-                        value={currency.symbol}
-                    >
+                    <option key={currency.symbol} value={currency.symbol}>
                         {currency.symbol}
                     </option>
                 ))}
+
             </select>
 
             <input value={rateInput} type="text" onChange={handleRateChange} placeholder="Enter exchange rate..."/>
