@@ -27,7 +27,6 @@ export const HistoricalCurrencyTable = () => {
                         <th>
                             <button type="button">Delete</button>
                         </th>
-
                         <th>
                             <button type="button">Source</button>
                         </th>
