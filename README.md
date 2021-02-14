@@ -57,8 +57,8 @@ GET	| /currency/random	| Get random currency event stream	|  | 	X
 
 ## TO DO
 
-- [ ] Add cost/benefit amount to the purchase process
-- [ ] Change color to red on loss and to green on benefit
+- :white_check_mark: Add cost/benefit amount to the purchase process
+- :white_check_mark: Change color to red on loss and to green on benefit
 - [ ] Add Router for navigation
 - [ ] Refactor component tree by adding containers
 - [ ] Add Redux for states 
