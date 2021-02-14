@@ -14,22 +14,8 @@ export const Currency = ({ currency, removeCurrency, index, currentExchangeValue
     const handleClick = (e) => {
         e.preventDefault()
         //handleToggle(e.currentTarget.id)
-        setCcolor('blue')
+        //setCcolor('blue')
     }
-
-    useEffect(() => {
-        if (currency.rate !== prevRate.current) {
-            if(currency.rate > prevRate.current) {
-                setCcolor('green');
-            }
-
-            else if(currency.rate < prevRate.current) {
-                setCcolor('red');
-            }
-
-            prevRate.current = currency.rate;
-        }
-    }, [currency.rate]);
 
     useEffect( () => {
         let historicalTotalAmount = calcTotalAmount(currency.rate, currency.amount);
@@ -45,7 +31,7 @@ export const Currency = ({ currency, removeCurrency, index, currentExchangeValue
     }, [currency, currentExchangeValues])
 
     return (
-        <tr id={currency.id} key={index} name="currency" value={currency.id} onClick={handleClick} className={currency.base ? "todo strike" : "todo"}>
+        <tr id={currency.id} key={index} name="currency" value={currency.id} onClick={handleClick} className={"currencyRow"}>
 
             {/* Delete */}
             <td>
@@ -78,6 +64,9 @@ export const Currency = ({ currency, removeCurrency, index, currentExchangeValue
 
             {/* Percentage Change */}
             <td> {(percentageChange).toFixed(2)}% </td>
+
+            {/* Cost/Benefit Identifier */}
+            <td style={{ backgroundColor: difference > 0 ? 'green' : 'red', width: 100}}> </td>
 
         </tr>
     );
