@@ -7,7 +7,10 @@ import {formatDate} from "../utils/DateFormatter";
 export const HistoricalCurrencyTable = () => {
     const [currencyList, setCurrencyList] = useState('');
     const [currentExchangeValues, setCurrentExchangeValues] = useState(null);
-    const [ baseInput, setBaseInput ] = useState('TRY');
+
+    //TO DO: Delete the states if the variables will remain constant
+
+    const [ baseInput, setBaseInput ] = useState( 'TRY');
     const [ targetInput, setTargetInput ] = useState('EUR,USD');
     const [ currencyDate, setCurrencyDate] = useState(formatDate(new Date()));
 
