@@ -1,9 +1,8 @@
 import React, {useState, useRef, useEffect} from 'react';
-import '../styles.css';
+import './Currency.css';
 import {calcTotalAmount, reverseExchangeRate, calcDifference, calcDifferencePercentage} from "../utils/CurrencyUtils";
 
 export const Currency = ({ currency, removeCurrency, index, currentExchangeValues }) => {
-    const [ccolor, setCcolor] = useState('yellow');
     const [totalAmount, setTotalAmount] = useState(-1);
     const [currentTotalAmount, setCurrentTotalAmount] = useState(-1);
     const [difference, setDifference] = useState(0);
@@ -38,35 +37,26 @@ export const Currency = ({ currency, removeCurrency, index, currentExchangeValue
                 <button style={{ background: "red" }} onClick={() => removeCurrency(index)}>x</button>
             </td>
 
-            {/* Source */}
-            <td>{currency.base}</td>
-
-            {/* Target */}
-            <td>{currency.target}</td>
-
             {/* Date */}
             <td>{currency.date}</td>
 
             {/* Exhange Rate */}
-            <td style={{ backgroundColor: ccolor }}> {(parseFloat(currency.rate)).toFixed(2)} </td>
+            <td> 1 {currency.base} <i className="fas fa-exchange-alt"></i> {(parseFloat(currency.rate)).toFixed(2)} {currency.target} </td>
 
             {/* Unit Bought */}
-            <td style={{ backgroundColor: ccolor }}> {(parseFloat(currency.amount)).toFixed(2)} </td>
+            <td> {(parseFloat(currency.amount)).toFixed(2)} {currency.base}</td>
 
             {/* Total Amount */}
-            <td style={{ backgroundColor: ccolor }}> {totalAmount.toFixed(2)} </td>
+            <td> {totalAmount.toFixed(2)} {currency.target}</td>
 
             {/* Current Amount */}
-            <td> {(currentTotalAmount).toFixed(2)} </td>
+            <td> {(currentTotalAmount).toFixed(2)} {currency.target}</td>
 
             {/* Cost/Benefit */}
-            <td> {(difference).toFixed(2)} </td>
+            <td> {(difference).toFixed(2)} {currency.target} </td>
 
             {/* Percentage Change */}
-            <td> {(percentageChange).toFixed(2)}% </td>
-
-            {/* Cost/Benefit Identifier */}
-            <td style={{ backgroundColor: difference > 0 ? 'green' : 'red', width: 100}}> </td>
+            <td style={{ backgroundColor: difference > 0 ? 'green' : 'red', width: 50, color: 'white'}}> {(percentageChange).toFixed(2)}% </td>
 
         </tr>
     );

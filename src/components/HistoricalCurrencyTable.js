@@ -3,6 +3,7 @@ import {Currency} from "./Currency";
 import {HistoricalCurrencyForm} from "./HistoricalCurrencyForm";
 import axios from "axios";
 import {formatDate} from "../utils/DateFormatter";
+import './HistoricalCurrencyTable.css';
 
 export const HistoricalCurrencyTable = () => {
     const [currencyList, setCurrencyList] = useState('');
@@ -11,7 +12,7 @@ export const HistoricalCurrencyTable = () => {
     //TO DO: Delete the states if the variables will remain constant
 
     const [ baseInput, setBaseInput ] = useState( 'TRY');
-    const [ targetInput, setTargetInput ] = useState('EUR,USD');
+    const [ targetInput, setTargetInput ] = useState('EUR,USD,GBP');
     const [ currencyDate, setCurrencyDate] = useState(formatDate(new Date()));
 
     const addCurrency = inputCurrency => {
@@ -65,50 +66,48 @@ export const HistoricalCurrencyTable = () => {
 
     return (
         <div>
-            <HistoricalCurrencyForm addCurrency={addCurrency} />
+            <div className={"historicalFormWrapper"}>
+                <HistoricalCurrencyForm addCurrency={addCurrency} />
+            </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            <button type="button">Delete</button>
-                        </th>
-                        <th>
-                            <button type="button">Source</button>
-                        </th>
-                        <th>
-                            <button type="button">Target</button>
-                        </th>
-                        <th>
-                            <button type="button">Date</button>
-                        </th>
-                        <th>
-                            <button type="button">Exchange Rate</button>
-                        </th>
-                        <th>
-                            <button type="button">Unit Bought</button>
-                        </th>
-                        <th>
-                            <button type="button">Total Amount</button>
-                        </th>
-                        <th>
-                            <button type="button">Current Amount</button>
-                        </th>
-                        <th>
-                            <button type="button">Cost/Benefit</button>
-                        </th>
-                        <th>
-                            <button type="button">Percentage Change</button>
-                        </th>
-                    </tr>
-                </thead>
+            <div className={"historicalTableWrapper"}>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <button className={"historicalSortingButton"} type="button">Delete</button>
+                            </th>
+                            <th>
+                                <button className={"historicalSortingButton"} type="button">Date</button>
+                            </th>
+                            <th>
+                                <button className={"historicalSortingButton"} type="button">Exchange Rate</button>
+                            </th>
+                            <th>
+                                <button className={"historicalSortingButton"} type="button">Unit Bought</button>
+                            </th>
+                            <th>
+                                <button className={"historicalSortingButton"} type="button">Total Amount</button>
+                            </th>
+                            <th>
+                                <button className={"historicalSortingButton"} type="button">Current Amount</button>
+                            </th>
+                            <th>
+                                <button className={"historicalSortingButton"} type="button">Cost/Benefit</button>
+                            </th>
+                            <th>
+                                <button className={"historicalSortingButton"} type="button">Percentage Change</button>
+                            </th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    {currencyList !== '' && currencyList.map((currency, index) => (
-                        <Currency index={index} key={index} currency={currency} removeCurrency={removeCurrency} currentExchangeValues={currentExchangeValues}/>
-                    ))}
-                </tbody>
-            </table>
+                    <tbody>
+                        {currencyList !== '' && currencyList.map((currency, index) => (
+                            <Currency index={index} key={index} currency={currency} removeCurrency={removeCurrency} currentExchangeValues={currentExchangeValues}/>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 
