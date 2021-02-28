@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import {CurrencyDatePicker} from "./CurrencyDatePicker";
 import {formatDate} from "../utils/DateFormatter";
 import axios from 'axios';
+import "./HistoricalCurrencyForm.css";
 
 import currencySymbols from "../../src/currencySymbols.json";
 
 export const HistoricalCurrencyForm = ({ addCurrency }) => {
     const [ baseInput, setBaseInput ] = useState('USD');
-    const [ targetInput, setTargetInput ] = useState('USD');
+    const [ targetInput, setTargetInput ] = useState('TRY');
     const [ rateInput, setRateInput ] = useState('');
     const [ currencyDate, setCurrencyDate] = useState(formatDate(new Date()));
 
@@ -58,32 +59,30 @@ export const HistoricalCurrencyForm = ({ addCurrency }) => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <div>
+                <span id={"sourceCurrencyText"}> Select Source Currency <i className='fas fa-angle-double-right'></i> </span>
 
-            <select onChange={handleBaseChange}>
+                <select onChange={handleBaseChange}>
+                        {currencySymbols.map(currency => (
+                            <option key={currency.symbol} value={currency.symbol}>
+                                {currency.symbol}
+                            </option>
+                        ))}
 
-                    {currencySymbols.map(currency => (
-                        <option key={currency.symbol} value={currency.symbol}>
-                            {currency.symbol}
-                        </option>
-                    ))}
+                </select>
+            </div>
 
-            </select>
+            <div>
+                <span id={"sourceCurrencyDate"}>Select the date of currency transaction <i className='fas fa-angle-double-right'></i> </span>
+                <CurrencyDatePicker value={currencyDate} onCurrencyDateSelect={handleCurrencyDateChange} />
+            </div>
 
-            <select onChange={handleTargetChange}>
+            <div>
+                <span id={"sourceCurrencyAmount"}>Enter the amount of {baseInput} that you bought <i className='fas fa-angle-double-right'></i>  </span>
+                <input value={rateInput} type="text" onChange={handleRateChange} placeholder="Enter amount"/>
+            </div>
 
-                {currencySymbols.map(currency => (
-                    <option key={currency.symbol} value={currency.symbol}>
-                        {currency.symbol}
-                    </option>
-                ))}
-
-            </select>
-
-            <input value={rateInput} type="text" onChange={handleRateChange} placeholder="Enter exchange rate..."/>
-
-            <CurrencyDatePicker value={currencyDate} onCurrencyDateSelect={handleCurrencyDateChange} />
-
-            <button>Submit</button>
+            <button id={"historicalFormSubmitButton"}>Submit</button>
 
         </form>
     );
